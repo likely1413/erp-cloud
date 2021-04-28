@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'com'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    //Eureka Client依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    //spring cloud oauth2依赖
+    implementation 'org.springframework.cloud:spring-cloud-starter-oauth2'
+    implementation('org.springframework.cloud:spring-cloud-starter-oauth2')
+            {
+                exclude group: 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
+            }
+    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.11.RELEASE'
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.4.RELEASE'
+
+    implementation 'mysql:mysql-connector-java'
+}
+
+test {
+    useJUnitPlatform()
+}
